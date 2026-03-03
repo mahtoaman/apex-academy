@@ -91,7 +91,7 @@ const Hero = () => {
             <div className="relative">
               <div className="absolute -inset-4 bg-accent/10 rounded-3xl blur-2xl" />
               <img
-                src={heroImage}
+                src={heroImage.src}
                 alt="Apex IT Academy students collaborating on tech projects"
                 className="relative rounded-2xl shadow-2xl w-full object-cover"
               />
