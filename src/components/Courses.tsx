@@ -4,13 +4,13 @@ import { Badge } from "@/components/ui/badge";
 import LeadFormDialog from "./LeadFormDialog";
 
 const itCourses = [
+  { name: "Major Incident Manager", skills: ["ITIL", "ServiceNow", "Communication", "SLA"], featured: true, hot: true },
   { name: "Data Analytics with Gen AI", skills: ["Python", "SQL", "Power BI", "Gen AI"], hot: true },
   { name: "Data Science", skills: ["Python", "ML", "Deep Learning", "Statistics"] },
   { name: "Java Full Stack", skills: ["Java", "Spring Boot", "React", "MySQL"] },
   { name: "AWS DevOps", skills: ["AWS", "Docker", "Kubernetes", "CI/CD"], hot: true },
   { name: "Azure DevOps", skills: ["Azure", "Terraform", "Jenkins", "Git"] },
   { name: "Power BI", skills: ["DAX", "Data Modeling", "Dashboards", "SQL"] },
-  { name: "Major Incident Manager", skills: ["ITIL", "ServiceNow", "Communication", "SLA"] },
   { name: "Business Analytics", skills: ["Excel", "SQL", "Tableau", "Statistics"] },
   { name: "SAP", skills: ["SAP FICO", "SAP MM", "SAP SD", "ABAP"] },
   { name: "Salesforce", skills: ["Admin", "Development", "Lightning", "Apex"] },
@@ -61,11 +61,21 @@ const Courses = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: i * 0.05 }}
-              className="bg-background rounded-2xl p-6 border card-hover group relative overflow-hidden"
+              className={`bg-background rounded-2xl p-6 border card-hover group relative overflow-hidden transition-all duration-300 ${
+                course.featured 
+                  ? 'border-accent border-2 ring-4 ring-accent/20 shadow-[0_0_30px_rgba(25,200,100,0.4)] relative z-10 scale-[1.02]' 
+                  : ''
+              }`}
             >
-              {course.hot && (
+              {(course.hot || course.featured) && (
                 <div className="absolute top-4 right-4">
-                  <Badge className="bg-gold text-gold-foreground border-0 text-xs font-bold">🔥 Trending</Badge>
+                  <Badge className={`border-0 text-xs font-bold ${
+                    course.featured 
+                      ? 'bg-accent text-accent-foreground shadow-lg' 
+                      : 'bg-gold text-gold-foreground'
+                  }`}>
+                    {course.featured ? '⭐ Most Popular' : '🔥 Trending'}
+                  </Badge>
                 </div>
               )}
               <h3 className="text-lg font-bold text-foreground mb-3 pr-20">{course.name}</h3>

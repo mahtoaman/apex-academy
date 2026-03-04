@@ -19,6 +19,7 @@ const Hero = () => {
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7 }}
+            className="flex flex-col items-center text-center lg:items-start lg:text-left"
           >
             {/* Badge */}
             <motion.div
@@ -41,10 +42,10 @@ const Hero = () => {
               100% job-focused IT training with guaranteed career support. Join 1500+ professionals who transformed their careers with Apex IT Academy.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 mb-10">
+            <div className="flex flex-col sm:flex-row w-full sm:w-auto gap-4 mb-10">
               <LeadFormDialog
                 trigger={
-                  <button className="bg-accent text-accent-foreground px-8 py-4 rounded-xl font-bold text-base hover:bg-accent/90 transition-all hover:shadow-lg hover:shadow-accent/25 flex items-center justify-center gap-2">
+                  <button className="bg-accent w-full sm:w-auto text-accent-foreground px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl font-bold text-sm sm:text-base hover:bg-accent/90 transition-all hover:shadow-lg hover:shadow-accent/25 flex items-center justify-center gap-2">
                     Apply Now — It's Free
                     <ArrowRight size={18} />
                   </button>
@@ -54,7 +55,7 @@ const Hero = () => {
                 href="https://api.whatsapp.com/send/?phone=919168242128&text=Hi%2C%20I%20want%20to%20book%20a%20free%20demo%20session&type=phone_number&app_absent=0"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="border border-primary-foreground/30 text-primary-foreground px-8 py-4 rounded-xl font-semibold text-base hover:bg-primary-foreground/10 transition-all flex items-center justify-center gap-2"
+                className="border border-primary-foreground/30 w-full sm:w-auto text-primary-foreground px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl font-semibold text-sm sm:text-base hover:bg-primary-foreground/10 transition-all flex items-center justify-center gap-2"
               >
                 <Play size={18} className="fill-current" />
                 Book Free Demo
@@ -62,7 +63,7 @@ const Hero = () => {
             </div>
 
             {/* Quick stats */}
-            <div className="flex gap-8">
+            <div className="flex flex-wrap justify-center lg:justify-start gap-6 sm:gap-8">
               {[
                 { value: "1500+", label: "Students Placed" },
                 { value: "41 LPA", label: "Highest Package" },
