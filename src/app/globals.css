@@ -186,6 +186,7 @@
   mask-composite: exclude;
   pointer-events: none;
   z-index: 20;
+  overflow: hidden;
 }
 
 .wire-gradient-top {
@@ -250,4 +251,48 @@
   0.1% { transform: translateX(-100%); opacity: 1; }
   4.9% { transform: translateX(100%); opacity: 1; }
   5%, 100% { transform: translateX(100%); opacity: 0; }
+}
+
+.link-wire-vertical {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(to bottom, transparent 0%, hsl(var(--accent)) 100%);
+  animation: trace-link-wire-vertical 5s linear infinite;
+  opacity: 0;
+}
+
+@keyframes trace-link-wire-vertical {
+  0% { transform: translateY(-100%); opacity: 0; }
+  0.1% { transform: translateY(-100%); opacity: 1; }
+  4.9% { transform: translateY(100%); opacity: 1; }
+  5%, 100% { transform: translateY(100%); opacity: 0; }
+}
+
+/* Mobile specific rotations (0deg Top to 180deg Bottom) */
+@media (max-width: 639px) { /* Tailwinds sm breakpoint is 640px */
+  .wire-gradient-top {
+    transform: translate(-50%, -50%) rotate(0deg);
+    animation: trace-top-mobile 5s linear infinite;
+  }
+  .wire-gradient-bot {
+    transform: translate(-50%, -50%) rotate(0deg);
+    animation: trace-bot-mobile 5s linear infinite;
+  }
+}
+
+@keyframes trace-top-mobile {
+  0% { transform: translate(-50%, -50%) rotate(0deg); opacity: 0; }
+  0.1% { transform: translate(-50%, -50%) rotate(0deg); opacity: 1; }
+  19.9% { transform: translate(-50%, -50%) rotate(180deg); opacity: 1; }
+  20%, 100% { transform: translate(-50%, -50%) rotate(180deg); opacity: 0; }
+}
+
+@keyframes trace-bot-mobile {
+  0% { transform: translate(-50%, -50%) rotate(0deg); opacity: 0; }
+  0.1% { transform: translate(-50%, -50%) rotate(0deg); opacity: 1; }
+  19.9% { transform: translate(-50%, -50%) rotate(-180deg); opacity: 1; }
+  20%, 100% { transform: translate(-50%, -50%) rotate(-180deg); opacity: 0; }
 }

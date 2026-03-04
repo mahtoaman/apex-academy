@@ -80,12 +80,22 @@ const HowItWorks = () => {
                 <p className="text-muted-foreground text-sm font-body leading-relaxed">{step.description}</p>
               </div>
               {i < steps.length - 1 && (
-                <div className="hidden lg:block absolute top-1/2 left-full w-6 h-px bg-border -translate-y-1/2 overflow-hidden z-20">
-                  <div 
-                    className="link-wire"
-                    style={{ animationDelay: `${i * 1.25 + 1.0}s` }}
-                  />
-                </div>
+                <>
+                  {/* Desktop Horizontal Line */}
+                  <div className="hidden lg:block absolute top-1/2 left-full w-6 h-px bg-border -translate-y-1/2 overflow-hidden z-20">
+                    <div 
+                      className="link-wire"
+                      style={{ animationDelay: `${i * 1.25 + 1.0}s` }}
+                    />
+                  </div>
+                  {/* Mobile Vertical Line */}
+                  <div className="block sm:hidden absolute left-1/2 top-full w-px h-6 bg-border -translate-x-1/2 overflow-hidden z-20">
+                    <div 
+                      className="link-wire-vertical"
+                      style={{ animationDelay: `${i * 1.25 + 1.0}s` }}
+                    />
+                  </div>
+                </>
               )}
             </motion.div>
           ))}
