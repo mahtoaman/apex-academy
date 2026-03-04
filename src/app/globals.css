@@ -132,10 +132,12 @@
 
   .marquee {
     animation: marquee 30s linear infinite;
+    will-change: transform;
   }
 
   .marquee-reverse {
     animation: marquee-reverse 30s linear infinite;
+    will-change: transform;
   }
 
   .floating-whatsapp {
@@ -155,13 +157,13 @@
 }
 
 @keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
 }
 
 @keyframes marquee-reverse {
-  0% { transform: translateX(-50%); }
-  100% { transform: translateX(0); }
+  0% { transform: translate3d(-50%, 0, 0); }
+  100% { transform: translate3d(0, 0, 0); }
 }
 
 @keyframes float {
@@ -172,4 +174,80 @@
 @keyframes count-up {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+.card-wire-mask {
+  position: absolute;
+  inset: -1.5px; /* extends slightly to cover borders */
+  border-radius: 17.5px; /* rounded-2xl is 16px, plus 1.5px */
+  padding: 2px; /* width of the glow wire */
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.wire-gradient-top {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 250%;
+  height: 250%;
+  background: conic-gradient(
+    transparent 0deg,
+    transparent 270deg,
+    hsl(var(--accent)) 360deg
+  );
+  transform: translate(-50%, -50%) rotate(-90deg);
+  animation: trace-top-rot 5s linear infinite;
+  opacity: 0;
+}
+
+.wire-gradient-bot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 250%;
+  height: 250%;
+  background: conic-gradient(
+    hsl(var(--accent)) 0deg,
+    transparent 90deg,
+    transparent 360deg
+  );
+  transform: translate(-50%, -50%) rotate(-90deg);
+  animation: trace-bot-rot 5s linear infinite;
+  opacity: 0;
+}
+
+.link-wire {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(to right, transparent 0%, hsl(var(--accent)) 100%);
+  animation: trace-link-wire 5s linear infinite;
+  opacity: 0;
+}
+
+@keyframes trace-top-rot {
+  0% { transform: translate(-50%, -50%) rotate(-90deg); opacity: 0; }
+  0.1% { transform: translate(-50%, -50%) rotate(-90deg); opacity: 1; }
+  19.9% { transform: translate(-50%, -50%) rotate(90deg); opacity: 1; }
+  20%, 100% { transform: translate(-50%, -50%) rotate(90deg); opacity: 0; }
+}
+
+@keyframes trace-bot-rot {
+  0% { transform: translate(-50%, -50%) rotate(-90deg); opacity: 0; }
+  0.1% { transform: translate(-50%, -50%) rotate(-90deg); opacity: 1; }
+  19.9% { transform: translate(-50%, -50%) rotate(-270deg); opacity: 1; }
+  20%, 100% { transform: translate(-50%, -50%) rotate(-270deg); opacity: 0; }
+}
+
+@keyframes trace-link-wire {
+  0% { transform: translateX(-100%); opacity: 0; }
+  0.1% { transform: translateX(-100%); opacity: 1; }
+  4.9% { transform: translateX(100%); opacity: 1; }
+  5%, 100% { transform: translateX(100%); opacity: 0; }
 }

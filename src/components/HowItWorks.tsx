@@ -60,7 +60,18 @@ const HowItWorks = () => {
               transition={{ delay: i * 0.15, duration: 0.5 }}
               className="relative group"
             >
-              <div className="bg-card rounded-2xl p-6 border card-hover h-full">
+              <div className="card-wire-mask">
+                <div 
+                  className="wire-gradient-top"
+                  style={{ animationDelay: `${i * 1.25}s` }}
+                />
+                <div 
+                  className="wire-gradient-bot"
+                  style={{ animationDelay: `${i * 1.25}s` }}
+                />
+              </div>
+
+              <div className="bg-card rounded-2xl p-6 border card-hover h-full relative z-10">
                 <div className="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center mb-4 group-hover:bg-accent/20 transition-colors">
                   <step.icon className="text-accent" size={28} />
                 </div>
@@ -69,7 +80,12 @@ const HowItWorks = () => {
                 <p className="text-muted-foreground text-sm font-body leading-relaxed">{step.description}</p>
               </div>
               {i < steps.length - 1 && (
-                <div className="hidden lg:block absolute top-1/2 -right-3 w-6 h-0.5 bg-border" />
+                <div className="hidden lg:block absolute top-1/2 left-full w-6 h-px bg-border -translate-y-1/2 overflow-hidden z-20">
+                  <div 
+                    className="link-wire"
+                    style={{ animationDelay: `${i * 1.25 + 1.0}s` }}
+                  />
+                </div>
               )}
             </motion.div>
           ))}
