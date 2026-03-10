@@ -2,24 +2,11 @@ import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import LeadFormDialog from "./LeadFormDialog";
+import Link from "next/link";
+import { coursesData } from "@/data/courses-data";
 
-const itCourses = [
-  { name: "Major Incident Manager", skills: ["ITIL", "ServiceNow", "Communication", "SLA"], featured: true, hot: true },
-  { name: "Data Analytics with Gen AI", skills: ["Python", "SQL", "Power BI", "Gen AI"], hot: true },
-  { name: "Data Science", skills: ["Python", "ML", "Deep Learning", "Statistics"] },
-  { name: "Java Full Stack", skills: ["Java", "Spring Boot", "React", "MySQL"] },
-  { name: "AWS DevOps", skills: ["AWS", "Docker", "Kubernetes", "CI/CD"], hot: true },
-  { name: "Azure DevOps", skills: ["Azure", "Terraform", "Jenkins", "Git"] },
-  { name: "Power BI", skills: ["DAX", "Data Modeling", "Dashboards", "SQL"] },
-  { name: "Business Analytics", skills: ["Excel", "SQL", "Tableau", "Statistics"] },
-  { name: "SAP", skills: ["SAP FICO", "SAP MM", "SAP SD", "ABAP"] },
-  { name: "Salesforce", skills: ["Admin", "Development", "Lightning", "Apex"] },
-  { name: "Python Developer", skills: ["Python", "Django", "REST APIs", "PostgreSQL"] },
-  { name: "DOT NET", skills: [".NET Core", "C#", "Azure", "SQL Server"] },
-  { name: "UI UX Design", skills: ["Figma", "Prototyping", "User Research", "Design Systems"] },
-  { name: "Management Information Systems", skills: ["ERP", "BI Tools", "Database", "Analytics"] },
-  { name: "APSE", skills: ["App Support", "ITIL", "Monitoring", "Troubleshooting"] },
-];
+// Data moved to @/data/courses-data.ts
+const itCourses = coursesData;
 
 const certCourses = [
   "AWS DevOps Certification",
@@ -56,47 +43,47 @@ const Courses = () => {
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
           {displayed.map((course, i) => (
-            <motion.div
-              key={course.name}
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: i * 0.05 }}
-              className={`bg-background rounded-2xl p-6 border card-hover group relative overflow-hidden transition-all duration-300 ${
-                course.featured 
-                  ? 'border-accent border-2 ring-4 ring-accent/20 shadow-[0_0_30px_rgba(25,200,100,0.4)] relative z-10 scale-[1.02]' 
-                  : ''
-              }`}
+            <Link
+              key={course.slug}
+              href={`/courses/${course.slug}`}
             >
-              {(course.hot || course.featured) && (
-                <div className="absolute top-4 right-4">
-                  <Badge className={`border-0 text-xs font-bold ${
-                    course.featured 
-                      ? 'bg-accent text-accent-foreground shadow-lg' 
-                      : 'bg-gold text-gold-foreground'
-                  }`}>
-                    {course.featured ? '⭐ Most Popular' : '🔥 Trending'}
-                  </Badge>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: i * 0.05 }}
+                className={`h-full bg-background rounded-2xl p-6 border card-hover group relative overflow-hidden transition-all duration-300 ${
+                  course.featured 
+                    ? 'border-accent border-2 ring-4 ring-accent/20 shadow-[0_0_30px_rgba(25,200,100,0.4)] relative z-10 scale-[1.02]' 
+                    : ''
+                }`}
+              >
+                {(course.hot || course.featured) && (
+                  <div className="absolute top-4 right-4">
+                    <Badge className={`border-0 text-xs font-bold ${
+                      course.featured 
+                        ? 'bg-accent text-accent-foreground shadow-lg' 
+                        : 'bg-gold text-gold-foreground'
+                    }`}>
+                      {course.featured ? '⭐ Most Popular' : '🔥 Trending'}
+                    </Badge>
+                  </div>
+                )}
+                <h3 className="text-lg font-bold text-foreground mb-3 pr-20 group-hover:text-accent transition-colors">{course.name}</h3>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {course.skills.map((skill) => (
+                    <span key={skill} className="text-xs bg-muted text-muted-foreground px-2.5 py-1 rounded-md font-medium">
+                      {skill}
+                    </span>
+                  ))}
                 </div>
-              )}
-              <h3 className="text-lg font-bold text-foreground mb-3 pr-20">{course.name}</h3>
-              <div className="flex flex-wrap gap-2 mb-4">
-                {course.skills.map((skill) => (
-                  <span key={skill} className="text-xs bg-muted text-muted-foreground px-2.5 py-1 rounded-md font-medium">
-                    {skill}
+                <div className="flex items-center justify-between">
+                  <span className="text-sm text-muted-foreground font-body">90 Days • Live + Projects</span>
+                  <span className="text-accent font-semibold text-sm group-hover:underline">
+                    View Details →
                   </span>
-                ))}
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="text-sm text-muted-foreground font-body">90 Days • Live + Projects</span>
-                <LeadFormDialog
-                  trigger={
-                    <button className="text-accent font-semibold text-sm hover:underline">
-                      Enroll →
-                    </button>
-                  }
-                />
-              </div>
-            </motion.div>
+                </div>
+              </motion.div>
+            </Link>
           ))}
         </div>
 
