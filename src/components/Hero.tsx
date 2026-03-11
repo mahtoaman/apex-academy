@@ -29,7 +29,7 @@ const Hero = () => {
               className="inline-flex items-center gap-2 bg-accent/20 border border-accent/30 rounded-full px-4 py-1.5 mb-6"
             >
               <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-              <span className="text-accent text-sm font-medium">Pay After Placement — No Risk</span>
+              <span className="text-accent text-sm font-medium">Pay After Placement</span>
             </motion.div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-primary-foreground leading-tight mb-6 text-balance">

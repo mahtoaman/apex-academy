@@ -131,12 +131,12 @@
   }
 
   .marquee {
-    animation: marquee 30s linear infinite;
+    animation: marquee 8s linear infinite;
     will-change: transform;
   }
 
   .marquee-reverse {
-    animation: marquee-reverse 30s linear infinite;
+    animation: marquee-reverse 8s linear infinite;
     will-change: transform;
   }
 
