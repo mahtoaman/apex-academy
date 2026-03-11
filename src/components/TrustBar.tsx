@@ -67,7 +67,7 @@ const TrustBar = () => {
         <div className="absolute right-0 top-0 bottom-0 w-24 md:w-48 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
 
         {/* Row 1: Moving Right -> Left */}
-        <div className="marquee flex w-fit hover:[animation-play-state:paused] items-center">
+        <div className="marquee flex w-fit hover:[animation-play-state:paused] items-center" style={{ animationDuration: '35s' }}>
           {[0, 1].map((copyIdx) => (
             <div key={`row1-copy-${copyIdx}`} className="flex flex-shrink-0 gap-6 pr-6 items-center">
               {halfItems.map((name, i) => (
@@ -86,7 +86,7 @@ const TrustBar = () => {
         </div>
 
         {/* Row 2: Moving Left -> Right */}
-        <div className="marquee-reverse flex w-fit hover:[animation-play-state:paused] ml-[-50%] items-center">
+        <div className="marquee-reverse flex w-fit hover:[animation-play-state:paused] ml-[-50%] items-center" style={{ animationDuration: '40s' }}>
           {[0, 1].map((copyIdx) => (
             <div key={`row2-copy-${copyIdx}`} className="flex flex-shrink-0 gap-6 pr-6 items-center">
               {halfReverse.map((name, i) => (

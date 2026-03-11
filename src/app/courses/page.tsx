@@ -98,13 +98,13 @@ export default function CoursesPage() {
                 </span>
               </motion.div>
 
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-primary-foreground leading-tight mb-6 text-balance">
+              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-primary-foreground leading-tight mb-6 text-balance">
                 Find the{" "}
                 <span className="gradient-text">Right Course</span>{" "}
                 for Your IT Career
               </h1>
 
-              <p className="text-primary-foreground/70 text-lg sm:text-xl mb-10 max-w-xl font-body leading-relaxed">
+              <p className="text-primary-foreground/70 text-base sm:text-xl mb-10 max-w-xl font-body leading-relaxed">
                 From Data Analytics to Cloud DevOps — choose from 15 expert-led
                 courses, pay only after you land your dream job.
               </p>
@@ -413,11 +413,11 @@ export default function CoursesPage() {
                 Pay After Placement
               </span>
             </span>
-            <h2 className="text-4xl sm:text-5xl font-extrabold text-primary-foreground mb-6">
+            <h2 className="text-3xl sm:text-5xl font-extrabold text-primary-foreground mb-6">
               Not sure which course{" "}
               <span className="gradient-text">to pick?</span>
             </h2>
-            <p className="text-primary-foreground/70 text-lg mb-10 font-body">
+            <p className="text-primary-foreground/70 text-base mb-10 font-body">
               Book a free 1-on-1 counselling session and our career advisors
               will help you choose the best path based on your background and
               goals.

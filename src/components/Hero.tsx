@@ -32,13 +32,13 @@ const Hero = () => {
               <span className="text-accent text-sm font-medium">Pay After Placement</span>
             </motion.div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-primary-foreground leading-tight mb-6 text-balance">
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-primary-foreground leading-tight mb-6 text-balance">
               Get Trained Today.{" "}
               <span className="gradient-text">Pay Only After</span>{" "}
               You Get Placed.
             </h1>
 
-            <p className="text-primary-foreground/70 text-lg sm:text-xl mb-8 max-w-xl font-body leading-relaxed">
+            <p className="text-primary-foreground/70 text-base sm:text-xl mb-8 max-w-xl font-body leading-relaxed">
               100% job-focused IT training with guaranteed career support. Join 1500+ professionals who transformed their careers with Apex IT Academy.
             </p>
 

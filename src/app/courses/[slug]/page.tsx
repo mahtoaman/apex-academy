@@ -99,12 +99,12 @@ export default function CoursePage() {
                   <span className="text-5xl sm:text-6xl leading-none mt-1">
                     {courseIcons[course.slug] || "📚"}
                   </span>
-                  <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-primary-foreground leading-tight">
+                  <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-primary-foreground leading-tight">
                     {course.title}
                   </h1>
                 </div>
 
-                <p className="text-primary-foreground/70 text-lg sm:text-xl leading-relaxed mb-8 max-w-2xl">
+                <p className="text-primary-foreground/70 text-base sm:text-xl leading-relaxed mb-8 max-w-2xl">
                   {course.description}
                 </p>
 
@@ -484,12 +484,12 @@ export default function CoursePage() {
               <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
               <span className="text-accent text-sm font-semibold">Zero Upfront Fee</span>
             </div>
-            <h2 className="text-4xl sm:text-5xl font-extrabold text-primary-foreground mb-4 leading-tight">
+            <h2 className="text-3xl sm:text-5xl font-extrabold text-primary-foreground mb-4 leading-tight">
               Ready to Start Your{" "}
               <span className="gradient-text">{course.name}</span>{" "}
               Journey?
             </h2>
-            <p className="text-primary-foreground/70 text-lg mb-10 leading-relaxed">
+            <p className="text-primary-foreground/70 text-base mb-10 leading-relaxed">
               Join hundreds of students who already transformed their careers. Enroll today — pay only after you get placed.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
