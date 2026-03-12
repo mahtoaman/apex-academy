@@ -79,10 +79,10 @@ const Navbar = () => {
         {/* Logo */}
         <Link href="/" className="flex items-center">
           <img
-            src="/apex-it-logo.avif"
+            src="/apex-logo.png"
             alt="Apex IT Academy"
             className={`h-10 sm:h-12 w-auto object-contain transition-all duration-300 ${
-              scrolled ? "brightness-0" : "brightness-100"
+              scrolled ? "brightness-0" : "brightness-0 invert"
             }`}
           />
         </Link>

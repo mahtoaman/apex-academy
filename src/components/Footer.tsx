@@ -10,13 +10,11 @@ const Footer = () => {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 rounded-lg bg-accent flex items-center justify-center">
-                <span className="text-accent-foreground font-extrabold text-lg">A</span>
-              </div>
-              <div>
-                <span className="font-extrabold text-lg block leading-tight">Apex IT</span>
-                <span className="text-xs opacity-60 block leading-tight">Academy</span>
-              </div>
+              <img
+                src="/apex-logo.png"
+                alt="Apex IT Academy"
+                className="h-10 w-auto object-contain brightness-0 invert opacity-90 hover:opacity-100 transition-opacity"
+              />
             </div>
             <p className="text-sm opacity-60 font-body leading-relaxed">
               Transforming careers through industry-ready IT training with our Pay After Placement model.

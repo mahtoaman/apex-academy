@@ -108,7 +108,6 @@ const Hero = () => {
                   </div>
                   <div>
                     <div className="font-bold text-sm text-card-foreground">Placement Guaranteed</div>
-                    <div className="text-xs text-muted-foreground">or full refund</div>
                   </div>
                 </div>
               </motion.div>
