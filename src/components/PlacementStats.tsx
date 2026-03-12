@@ -21,7 +21,7 @@ const PlacementStats = () => {
 
   return (
     <section id="placements" ref={ref} className="stats-dark section-padding">
-      <div className="container-main">
+      <div className="container-main" data-reveal="up">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}

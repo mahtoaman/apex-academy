@@ -48,7 +48,7 @@ const FAQ = () => {
 
   return (
     <section id="faqs" ref={ref} className="section-padding bg-background">
-      <div className="container-main max-w-3xl">
+      <div className="container-main max-w-3xl" data-reveal="down">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}

@@ -26,7 +26,7 @@ const Courses = () => {
 
   return (
     <section id="courses" ref={ref} className="section-padding bg-card">
-      <div className="container-main">
+      <div className="container-main" data-reveal="left">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}

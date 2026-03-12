@@ -27,7 +27,7 @@ const TrustBar = () => {
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-accent/30 to-transparent" />
       <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-accent/30 to-transparent" />
 
-      <div className="container-main mx-auto px-4 mb-16 relative z-20">
+      <div className="container-main mx-auto px-4 mb-16 relative z-20" data-reveal="down">
         <div className="flex flex-col items-center text-center space-y-6">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
@@ -60,7 +60,7 @@ const TrustBar = () => {
       </div>
 
       {/* Marquee Container - Slightly tilted for dynamic effect */}
-      <div className="relative flex flex-col gap-6 transform -rotate-1 lg:-rotate-2 scale-[1.05] overflow-hidden py-10">
+      <div className="relative flex flex-col gap-6 transform -rotate-1 lg:-rotate-2 scale-[1.05] overflow-hidden py-10" data-reveal="left">
         
         {/* Shadow overlays for smooth fade at edges */}
         <div className="absolute left-0 top-0 bottom-0 w-24 md:w-48 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />

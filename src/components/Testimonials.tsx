@@ -35,7 +35,7 @@ const Testimonials = () => {
 
   return (
     <section id="testimonials" ref={ref} className="section-padding bg-card">
-      <div className="container-main">
+      <div className="container-main" data-reveal="right">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}

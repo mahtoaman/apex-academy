@@ -93,6 +93,10 @@
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-background text-foreground font-sans;
     font-family: 'Plus Jakarta Sans', sans-serif;
@@ -153,6 +157,42 @@
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+}
+
+/* ── Scroll Reveal ─────────────────────────────────────────── */
+[data-reveal] {
+  opacity: 0;
+  transition:
+    opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+[data-reveal] { transform: translateY(28px); }
+[data-reveal="up"] { transform: translateY(28px); }
+[data-reveal="down"] { transform: translateY(-28px); }
+[data-reveal="left"] { transform: translateX(-28px); }
+[data-reveal="right"] { transform: translateX(28px); }
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: translate(0, 0) !important;
+}
+
+/* Stagger siblings that carry a delay attribute */
+[data-reveal][data-delay='100'] { transition-delay: 0.1s; }
+[data-reveal][data-delay='200'] { transition-delay: 0.2s; }
+[data-reveal][data-delay='300'] { transition-delay: 0.3s; }
+[data-reveal][data-delay='400'] { transition-delay: 0.4s; }
+[data-reveal][data-delay='500'] { transition-delay: 0.5s; }
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }
 

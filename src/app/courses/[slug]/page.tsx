@@ -200,7 +200,7 @@ export default function CoursePage() {
 
       {/* ─── STATS BAR ────────────────────────────────────────────── */}
       <section className="py-10 bg-background border-b border-border/50">
-        <div className="container-main px-4 sm:px-6 lg:px-8">
+        <div className="container-main px-4 sm:px-6 lg:px-8" data-reveal="up">
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8">
             {[
               { value: "1500+", label: "Students Placed" },
@@ -226,7 +226,7 @@ export default function CoursePage() {
 
       {/* ─── WHAT YOU'LL LEARN ────────────────────────────────────── */}
       <section className="py-16 sm:py-20 bg-background">
-        <div className="container-main px-4 sm:px-6 lg:px-8">
+        <div className="container-main px-4 sm:px-6 lg:px-8" data-reveal="left">
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             {/* Why this course */}
             <motion.div
@@ -291,7 +291,7 @@ export default function CoursePage() {
 
       {/* ─── TOOLS & SKILLS ──────────────────────────────────────── */}
       <section className="py-16 sm:py-20 bg-card/40 border-y border-border/50">
-        <div className="container-main px-4 sm:px-6 lg:px-8">
+        <div className="container-main px-4 sm:px-6 lg:px-8" data-reveal="right">
           <div className="text-center mb-12">
             <span className="text-accent font-semibold text-sm uppercase tracking-widest">Curriculum Highlights</span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground mt-2">
@@ -323,7 +323,7 @@ export default function CoursePage() {
 
       {/* ─── SYLLABUS / MODULES ──────────────────────────────────── */}
       <section id="syllabus" className="py-16 sm:py-24 bg-background">
-        <div className="container-main px-4 sm:px-6 lg:px-8">
+        <div className="container-main px-4 sm:px-6 lg:px-8" data-reveal="up">
           <div className="grid lg:grid-cols-3 gap-12">
             {/* Left: sticky overview */}
             <div className="lg:col-span-1">
@@ -440,7 +440,7 @@ export default function CoursePage() {
 
       {/* ─── CAREER ROLES ─────────────────────────────────────────── */}
       <section className="py-16 sm:py-20 bg-card/40 border-y border-border/50">
-        <div className="container-main px-4 sm:px-6 lg:px-8">
+        <div className="container-main px-4 sm:px-6 lg:px-8" data-reveal="left">
           <div className="text-center mb-12">
             <span className="text-accent font-semibold text-sm uppercase tracking-widest">Career Outcomes</span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground mt-2">
@@ -473,7 +473,7 @@ export default function CoursePage() {
 
       {/* ─── BOTTOM CTA ────────────────────────────────────────────── */}
       <section className="py-16 sm:py-20 gradient-hero">
-        <div className="container-main px-4 sm:px-6 lg:px-8">
+        <div className="container-main px-4 sm:px-6 lg:px-8" data-reveal="down">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

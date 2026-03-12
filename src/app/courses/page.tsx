@@ -221,7 +221,7 @@ export default function CoursesPage() {
       {/* ── FEATURED COURSE ────────────────────────────────────── */}
       {featuredCourse && (
         <section className="py-16 bg-card/50 border-b">
-          <div className="container-main px-4 sm:px-6 lg:px-8">
+          <div className="container-main px-4 sm:px-6 lg:px-8" data-reveal="right">
             <div className="flex items-center gap-2 mb-8">
               <Star size={18} className="text-accent fill-accent" />
               <span className="text-sm font-bold text-accent uppercase tracking-widest">
@@ -289,7 +289,7 @@ export default function CoursesPage() {
 
       {/* ── ALL COURSES GRID ────────────────────────────────────── */}
       <section className="py-20 bg-background">
-        <div className="container-main px-4 sm:px-6 lg:px-8">
+        <div className="container-main px-4 sm:px-6 lg:px-8" data-reveal="up">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
             <div>
               <span className="text-accent font-semibold text-sm uppercase tracking-widest">
@@ -400,7 +400,7 @@ export default function CoursesPage() {
 
       {/* ── BOTTOM CTA ─────────────────────────────────────────── */}
       <section className="py-20 gradient-hero">
-        <div className="container-main px-4 sm:px-6 lg:px-8 text-center">
+        <div className="container-main px-4 sm:px-6 lg:px-8 text-center" data-reveal="down">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

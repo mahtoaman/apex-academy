@@ -14,7 +14,7 @@ const FinalCTA = () => {
         <div className="absolute bottom-10 left-10 w-80 h-80 bg-accent/20 rounded-full blur-3xl" />
       </div>
 
-      <div className="container-main relative z-10 text-center">
+      <div className="container-main relative z-10 text-center" data-reveal="up">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
