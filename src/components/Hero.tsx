@@ -94,7 +94,7 @@ const Hero = () => {
               <img
                 src={heroImage.src}
                 alt="Apex IT Academy students collaborating on tech projects"
-                className="relative rounded-2xl shadow-2xl w-full object-cover"
+                className="relative rounded-2xl shadow-2xl w-full max-h-[450px] object-cover object-center"
               />
               {/* Floating card */}
               <motion.div
@@ -116,11 +116,10 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Scrolling marquee bar */}
       <div className="absolute bottom-0 left-0 right-0 bg-accent/10 backdrop-blur-sm py-3 overflow-hidden">
-        <div className="marquee flex gap-8 whitespace-nowrap">
-          {Array(3).fill(null).map((_, setIdx) => (
-            <div key={setIdx} className="flex gap-8">
+        <div className="marquee flex w-max">
+          {Array(4).fill(null).map((_, setIdx) => (
+            <div key={setIdx} className="flex gap-8 pr-8 whitespace-nowrap">
               {["PAY AFTER PLACEMENT", "ONLINE CLASSES", "NO UPFRONT FEE", "PLACEMENT GUARANTEED", "90 DAYS TRAINING"].map((text) => (
                 <span key={`${setIdx}-${text}`} className="text-primary-foreground/60 text-sm font-semibold tracking-widest flex items-center gap-4">
                   <span className="w-1.5 h-1.5 rounded-full bg-accent" />
