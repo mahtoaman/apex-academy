@@ -94,7 +94,7 @@ const Hero = () => {
               <img
                 src={heroImage.src}
                 alt="Apex IT Academy students collaborating on tech projects"
-                className="relative rounded-2xl shadow-2xl w-full max-h-[450px] object-cover object-center"
+                className="relative rounded-2xl shadow-2xl w-full max-h-[380px] object-cover object-center"
               />
               {/* Floating card */}
               <motion.div
