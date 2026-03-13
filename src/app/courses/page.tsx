@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
+import React, { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -35,23 +35,7 @@ const categoryMap: Record<string, string[]> = {
   enterprise: ["major-incident-manager", "sap", "salesforce", "apse"],
 };
 
-const courseIcons: Record<string, string> = {
-  "data-analytics": "📊",
-  "major-incident-manager": "🚨",
-  "data-science": "🤖",
-  "java-full-stack": "☕",
-  "aws-devops": "☁️",
-  "azure-devops": "🔵",
-  "power-bi": "📈",
-  "business-analytics": "💼",
-  sap: "🏗️",
-  salesforce: "⚡",
-  "python-developer": "🐍",
-  "dot-net": "🪟",
-  "ui-ux-design": "🎨",
-  "management-information-systems": "🗄️",
-  apse: "🛠️",
-};
+import { courseIcons } from "@/data/course-icons";
 
 export default function CoursesPage() {
   const [activeCategory, setActiveCategory] = useState("all");
@@ -70,7 +54,7 @@ export default function CoursesPage() {
       <Navbar />
 
       {/* ── HERO ───────────────────────────────────────────────── */}
-      <section className="relative gradient-hero min-h-[90vh] flex items-center overflow-hidden">
+      <section className="relative gradient-hero min-h-screen flex items-center overflow-hidden">
         {/* Blobs */}
         <div className="absolute inset-0 opacity-20 pointer-events-none">
           <div className="absolute top-16 left-10 w-80 h-80 bg-accent/40 rounded-full blur-3xl" />
@@ -148,7 +132,7 @@ export default function CoursesPage() {
                 <img
                   src="/courses-hero.png"
                   alt="Students learning IT skills at Apex IT Academy"
-                  className="relative rounded-2xl shadow-2xl w-full object-cover aspect-[4/3]"
+                  className="relative rounded-2xl shadow-2xl w-full max-h-[380px] object-cover object-center"
                 />
                 {/* Floating badge */}
                 <motion.div
@@ -358,7 +342,7 @@ export default function CoursesPage() {
 
                     {/* Icon */}
                     <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center text-2xl mb-5 group-hover:scale-110 transition-transform duration-300">
-                      {courseIcons[course.slug] || "📚"}
+                      {courseIcons[course.slug] ? React.cloneElement(courseIcons[course.slug] as React.ReactElement, { size: 28 }) : "📚"}
                     </div>
 
                     <h3 className="text-lg font-bold text-foreground mb-2 pr-20 group-hover:text-accent transition-colors">

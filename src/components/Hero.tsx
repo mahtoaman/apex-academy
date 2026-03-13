@@ -12,7 +12,7 @@ const Hero = () => {
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent/20 rounded-full blur-3xl" />
       </div>
 
-      <div className="container-main section-padding relative z-10 pt-28 sm:pt-32">
+      <div className="container-main section-padding relative z-10 pt-32 sm:pt-36">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left - Content */}
           <motion.div

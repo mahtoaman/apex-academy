@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import { Providers } from '@/components/Providers';
 import './globals.css';
+import DesktopStickyBanner from '@/components/DesktopStickyBanner';
+import WelcomePopup from '@/components/WelcomePopup';
 
 export const metadata: Metadata = {
   title: 'Apex IT Academy — Pay After Placement IT Training | Pune',
@@ -18,11 +20,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body>
+    <html lang="en" suppressHydrationWarning>
+      <body suppressHydrationWarning>
         <Providers>
           {children}
         </Providers>
+        <DesktopStickyBanner />
+        <WelcomePopup />
       </body>
     </html>
   );

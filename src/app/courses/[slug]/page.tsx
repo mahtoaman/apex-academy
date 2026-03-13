@@ -22,25 +22,9 @@ import {
   Users,
   Award,
 } from "lucide-react";
-import { useState } from "react";
+import React, { useState } from "react";
 
-const courseIcons: Record<string, string> = {
-  "data-analytics": "📊",
-  "major-incident-manager": "🚨",
-  "data-science": "🤖",
-  "java-full-stack": "☕",
-  "aws-devops": "☁️",
-  "azure-devops": "🔵",
-  "power-bi": "📈",
-  "business-analytics": "💼",
-  sap: "🏗️",
-  salesforce: "⚡",
-  "python-developer": "🐍",
-  "dot-net": "🪟",
-  "ui-ux-design": "🎨",
-  "management-information-systems": "🗄️",
-  apse: "🛠️",
-};
+import { courseIcons } from "@/data/course-icons";
 
 export default function CoursePage() {
   const params = useParams();
@@ -97,7 +81,7 @@ export default function CoursePage() {
                 {/* Icon + Title */}
                 <div className="flex items-start gap-4 mb-6">
                   <span className="text-5xl sm:text-6xl leading-none mt-1">
-                    {courseIcons[course.slug] || "📚"}
+                    {courseIcons[course.slug] ? React.cloneElement(courseIcons[course.slug] as React.ReactElement, { size: 52 }) : "📚"}
                   </span>
                   <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-primary-foreground leading-tight">
                     {course.title}
@@ -150,7 +134,7 @@ export default function CoursePage() {
               <div className="bg-card/90 backdrop-blur-sm rounded-3xl border border-border/50 shadow-2xl p-6 sm:p-8">
                 <div className="flex items-center gap-3 mb-6 pb-6 border-b border-border/50">
                   <div className="w-12 h-12 rounded-2xl bg-accent/10 flex items-center justify-center text-2xl">
-                    {courseIcons[course.slug] || "📚"}
+                    {courseIcons[course.slug] ? React.cloneElement(courseIcons[course.slug] as React.ReactElement, { size: 24 }) : "📚"}
                   </div>
                   <div>
                     <div className="font-bold text-foreground text-base leading-tight">{course.name}</div>

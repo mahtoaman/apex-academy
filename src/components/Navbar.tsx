@@ -4,18 +4,29 @@ import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown, ArrowRight } from "lucide-react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import LeadFormDialog from "./LeadFormDialog";
 
+import { 
+  BarChart3, 
+  Siren, 
+  Coffee, 
+  Cloud, 
+  TrendingUp, 
+  Bot, 
+  Zap, 
+  Code 
+} from "lucide-react";
+
 const popularCourses = [
-  { emoji: "📊", name: "Data Analytics with Gen AI", slug: "data-analytics" },
-  { emoji: "🚨", name: "Major Incident Manager", slug: "major-incident-manager" },
-  { emoji: "☕", name: "Java Full Stack", slug: "java-full-stack" },
-  { emoji: "☁️", name: "AWS DevOps", slug: "aws-devops" },
-  { emoji: "📈", name: "Power BI", slug: "power-bi" },
-  { emoji: "🤖", name: "Data Science", slug: "data-science" },
-  { emoji: "⚡", name: "Salesforce", slug: "salesforce" },
-  { emoji: "🐍", name: "Python Developer", slug: "python-developer" },
+  { icon: <BarChart3 className="text-blue-500" />, name: "Data Analytics with Gen AI", slug: "data-analytics" },
+  { icon: <Siren className="text-red-500" />, name: "Major Incident Manager", slug: "major-incident-manager" },
+  { icon: <Coffee className="text-amber-700" />, name: "Java Full Stack", slug: "java-full-stack" },
+  { icon: <Cloud className="text-sky-400" />, name: "AWS DevOps", slug: "aws-devops" },
+  { icon: <TrendingUp className="text-green-500" />, name: "Power BI", slug: "power-bi" },
+  { icon: <Bot className="text-slate-500" />, name: "Data Science", slug: "data-science" },
+  { icon: <Zap className="text-yellow-500" />, name: "Salesforce", slug: "salesforce" },
+  { icon: <Code className="text-green-600" />, name: "Python Developer", slug: "python-developer" },
 ];
 
 const navLinks = [
@@ -31,16 +42,33 @@ const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileCoursesOpen, setMobileCoursesOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
   const dropdownRef = useRef<HTMLDivElement>(null);
   const dropdownTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
   const pathname = usePathname();
+  const router = useRouter();
   const isHome = pathname === "/";
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+      if (window.location.pathname === "/") {
+        const sections = navLinks.map((l) => l.section);
+        let current = "home";
+        for (const section of sections) {
+          const el = document.getElementById(section);
+          if (el && window.scrollY >= el.offsetTop - 200) {
+            current = section;
+          }
+        }
+        setActiveSection(current);
+      }
+    };
     window.addEventListener("scroll", handleScroll);
+    // initial check
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [pathname]);
 
   const openDropdown = () => {
     if (dropdownTimeout.current) clearTimeout(dropdownTimeout.current);
@@ -65,16 +93,36 @@ const Navbar = () => {
     pathname === "/courses" || pathname.startsWith("/courses/");
 
   return (
-    <motion.nav
+    <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-card/95 backdrop-blur-md shadow-lg border-b"
-          : "bg-transparent"
-      }`}
+      className="fixed top-0 left-0 right-0 z-50 flex flex-col transition-all duration-300"
     >
+      {/* Top Marquee Header */}
+      <div className="w-full h-7 sm:h-8 bg-accent text-accent-foreground flex items-center overflow-hidden z-50">
+        <div className="flex items-center marquee gap-8 w-max px-4">
+          {Array(4).fill(null).map((_, i) => (
+            <div key={i} className="flex gap-8 items-center shrink-0 font-light">
+              <span className="text-xs sm:text-sm flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse shrink-0" />
+                Admissions Open for 2024 Batch
+              </span>
+              <span className="text-xs sm:text-sm shrink-0">✨ 100% Placement Guarantee</span>
+              <span className="text-xs sm:text-sm shrink-0">💼 Pay ONLY After You Get Placed</span>
+              <span className="text-xs sm:text-sm text-yellow-300 shrink-0">🔥 Up To 41 LPA Highest Package</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <nav
+        className={`w-full transition-all duration-300 ${
+          scrolled
+            ? "bg-card/95 backdrop-blur-md shadow-lg border-b"
+            : "bg-transparent"
+        }`}
+      >
       <div className="container-main flex items-center justify-between h-16 sm:h-20 px-4 sm:px-6 lg:px-8">
         {/* Logo */}
         <Link href="/" className="flex items-center">
@@ -92,12 +140,13 @@ const Navbar = () => {
           {/* Home */}
           {navLinks.slice(0, 1).map((link) => {
             const { isNextLink, href } = getLinkProps(link);
+            const isActive = isHome ? activeSection === link.section : pathname === link.href;
             return isNextLink ? (
-              <Link key={link.href} href={href} className={linkClass()}>
+              <Link key={link.href} href={href} className={linkClass(isActive)}>
                 {link.label}
               </Link>
             ) : (
-              <a key={link.href} href={href} className={linkClass()}>
+              <a key={link.href} href={href} className={linkClass(isActive)}>
                 {link.label}
               </a>
             );
@@ -147,27 +196,33 @@ const Navbar = () => {
                   {/* Course grid */}
                   <div className="grid grid-cols-2 gap-px bg-border/30 p-0">
                     {popularCourses.map((course) => (
-                      <Link
+                      <button
                         key={course.slug}
-                        href={`/courses/${course.slug}`}
-                        onClick={() => setDropdownOpen(false)}
-                        className="flex items-center gap-3 px-4 py-3.5 bg-card hover:bg-accent/5 hover:text-accent transition-colors group"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          setDropdownOpen(false);
+                          router.push(`/courses/${course.slug}`);
+                        }}
+                        className="flex items-center gap-3 px-4 py-3.5 bg-card hover:bg-accent/5 hover:text-accent transition-colors group w-full text-left"
                       >
-                        <span className="text-xl leading-none shrink-0">
-                          {course.emoji}
+                        <span className="text-xl leading-none shrink-0 border border-border/50 p-1.5 rounded-md bg-background shadow-sm group-hover:bg-accent/10 transition-colors">
+                          {course.icon}
                         </span>
                         <span className="text-sm font-medium text-foreground group-hover:text-accent leading-tight">
                           {course.name}
                         </span>
-                      </Link>
+                      </button>
                     ))}
                   </div>
 
                   {/* Footer CTA */}
-                  <Link
-                    href="/courses"
-                    onClick={() => setDropdownOpen(false)}
-                    className="flex items-center justify-between px-5 py-3.5 bg-accent/5 border-t border-border/50 hover:bg-accent/10 transition-colors group"
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setDropdownOpen(false);
+                      router.push('/courses');
+                    }}
+                    className="flex items-center justify-between px-5 py-3.5 bg-accent/5 border-t border-border/50 hover:bg-accent/10 transition-colors group w-full text-left"
                   >
                     <span className="text-sm font-bold text-foreground">
                       View All 15 Courses
@@ -176,7 +231,7 @@ const Navbar = () => {
                       size={15}
                       className="text-accent group-hover:translate-x-1 transition-transform"
                     />
-                  </Link>
+                  </button>
                 </motion.div>
               )}
             </AnimatePresence>
@@ -185,12 +240,13 @@ const Navbar = () => {
           {/* Remaining nav links */}
           {navLinks.slice(1).map((link) => {
             const { isNextLink, href } = getLinkProps(link);
+            const isActive = isHome ? activeSection === link.section : pathname === link.href;
             return isNextLink ? (
-              <Link key={link.href} href={href} className={linkClass()}>
+              <Link key={link.href} href={href} className={linkClass(isActive)}>
                 {link.label}
               </Link>
             ) : (
-              <a key={link.href} href={href} className={linkClass()}>
+              <a key={link.href} href={href} className={linkClass(isActive)}>
                 {link.label}
               </a>
             );
@@ -229,12 +285,13 @@ const Navbar = () => {
               {/* Home */}
               {navLinks.slice(0, 1).map((link) => {
                 const { isNextLink, href } = getLinkProps(link);
+                const isActive = isHome ? activeSection === link.section : pathname === link.href;
                 return isNextLink ? (
                   <Link
                     key={link.href}
                     href={href}
                     onClick={() => setMobileOpen(false)}
-                    className="block font-medium py-2.5 text-foreground"
+                    className={`block font-medium py-2.5 ${isActive ? "text-accent" : "text-foreground"}`}
                   >
                     {link.label}
                   </Link>
@@ -243,7 +300,7 @@ const Navbar = () => {
                     key={link.href}
                     href={href}
                     onClick={() => setMobileOpen(false)}
-                    className="block font-medium py-2.5 text-foreground"
+                    className={`block font-medium py-2.5 ${isActive ? "text-accent" : "text-foreground"}`}
                   >
                     {link.label}
                   </a>
@@ -285,7 +342,7 @@ const Navbar = () => {
                             }}
                             className="flex items-center gap-2.5 py-2 px-2 rounded-lg text-sm text-muted-foreground hover:text-accent hover:bg-accent/5 transition-colors"
                           >
-                            <span>{course.emoji}</span>
+                            <span className="border border-border/50 p-1 rounded-md bg-background">{course.icon}</span>
                             <span>{course.name}</span>
                           </Link>
                         ))}
@@ -308,12 +365,13 @@ const Navbar = () => {
               {/* Other links */}
               {navLinks.slice(1).map((link) => {
                 const { isNextLink, href } = getLinkProps(link);
+                const isActive = isHome ? activeSection === link.section : pathname === link.href;
                 return isNextLink ? (
                   <Link
                     key={link.href}
                     href={href}
                     onClick={() => setMobileOpen(false)}
-                    className="block font-medium py-2.5 text-foreground"
+                    className={`block font-medium py-2.5 ${isActive ? "text-accent" : "text-foreground"}`}
                   >
                     {link.label}
                   </Link>
@@ -322,7 +380,7 @@ const Navbar = () => {
                     key={link.href}
                     href={href}
                     onClick={() => setMobileOpen(false)}
-                    className="block font-medium py-2.5 text-foreground"
+                    className={`block font-medium py-2.5 ${isActive ? "text-accent" : "text-foreground"}`}
                   >
                     {link.label}
                   </a>
@@ -342,7 +400,8 @@ const Navbar = () => {
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.nav>
+      </nav>
+    </motion.header>
   );
 };
 
