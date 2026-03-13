@@ -106,7 +106,7 @@ const Navbar = () => {
             <div key={i} className="flex gap-8 items-center shrink-0 font-light">
               <span className="text-xs sm:text-sm flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse shrink-0" />
-                Admissions Open for 2024 Batch
+                Admissions Open for 2026 Batch
               </span>
               <span className="text-xs sm:text-sm shrink-0">✨ 100% Placement Guarantee</span>
               <span className="text-xs sm:text-sm shrink-0">💼 Pay ONLY After You Get Placed</span>
